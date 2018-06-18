@@ -10,7 +10,7 @@ namespace Program
     {
         static void Main(string[] args)
         {
-            CustomList<int> list = new CustomList<int>();
+            CustomList<int> list = new CustomList<int>(16);
             list.Add(9);
             list.Add(8);
             list.Add(7);
