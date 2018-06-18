@@ -16,7 +16,7 @@ namespace Program
                 CustomList<int> list = new CustomList<int>();
                 int expectedResult = 0;
                 //assert
-                list.Add(expectedResult);
+                list.Add(list, expectedResult);
                 int result = list[0];
                 //act
                 Assert.AreEqual(result, expectedResult);
@@ -40,7 +40,7 @@ namespace Program
                 CustomList<int> list = new CustomList<int>();
                 int expectedResult = 5;
                 //assert
-                for(int i = 0; i < 5; i++)
+                for (int i = 0; i < 5; i++)
                 {
                     list.Add(i);
                 }
@@ -138,7 +138,7 @@ namespace Program
             public void ZipTestInts()
             {
                 CustomList<int> odds = new CustomList<int>() { 1, 3, 5 };
-                CustomList<int> evens = new CustomList<int>() { 2,4,6 };
+                CustomList<int> evens = new CustomList<int>() { 2, 4, 6 };
                 CustomList<int> expectedResult = new CustomList<int>() { 1, 2, 3, 4, 5, 6 };
 
                 CustomList<int> result = odds.Zip(evens);
@@ -172,7 +172,7 @@ namespace Program
             public void ToStringTestInts()
             {
                 CustomList<int> list = new CustomList<int>() { 1, 2, 3, 4, 5 };
-                string expectedResult = "1 2 3 4 5";
+                string expectedResult = "12345";
 
                 string result = ToString(list);
 
@@ -182,7 +182,7 @@ namespace Program
             public void ToStringTestChars()
             {
                 CustomList<char> list = new CustomList<char>() { 'H', 'e', 'l', 'l', 'o' };
-                string expectedResult = "H e l l o";
+                string expectedResult = "Hello";
 
                 string result = ToString(list);
 
@@ -293,4 +293,5 @@ namespace Program
             //    Assert.AreEqual(result, expectedResult);
             //}
         }
+    }
 }
