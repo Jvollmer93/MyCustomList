@@ -8,11 +8,11 @@ namespace Program
 {
     public class CustomList<T>
     {
-        public int Count; { get; set; }
-        public int Capatcity; { get; set; }
-        public T[] myArray; { get; set; }
+        public int Count { get; set; }
+        public int Capatcity { get; set; }
+        public T[] myArray { get; set; }
 
-        public Add(T value)
+        public T[] Add(T value)
         {
             Count++;
             T[] newArray = myArray;
@@ -27,18 +27,18 @@ namespace Program
 
             return myArray;              
         }
-        public Remove(T value)
+        public T[] Remove(T value)
         {
             T[] newArray = myArray;
             myArray = new T[Count];
 
             for ( int i = 0; i < newArray.Length; i++ )
             { 
-                if( newArray[i] != value )
+                if (newArray[i] != value)
                 {
                     myArray[i] = newArray[i];
                 }
-                else if ( newArray[i] == value )
+                else if (newArray[i] == value)
                 {
                     Count--;
                 }
@@ -57,9 +57,9 @@ namespace Program
 
             return arrayString;
         }
-        public Zip(T zipArray)
+        public T[] Zip(T[] zipArray)
         {
-            newArray T[] = new Array[myArray.length + zipArray.length];
+            T[] newArray = new Array[myArray.Length + zipArray.Length];
             int counter = 0;
 
             for (int i = 0; i < myArray.length; i++)
@@ -75,14 +75,14 @@ namespace Program
             return myArray;
         }
 
-        public static CustomList<T> operator + (CustomList<T> x, CustomList<T> y)
+        public static CustomList<T> operator + (T x, T y)
         {
-            CustomList<T> result = x + y;
+            T result = x + y;
             return result;
         }
-        public static CustomList<T> operator - (CustomList<T> x, CustomList<T> y)
+        public static CustomList<T> operator - (T x, T y)
         {
-            CustomList<T> result = x - y;
+            T result = x - y;
             return result;
         }
 
