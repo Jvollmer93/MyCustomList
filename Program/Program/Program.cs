@@ -62,6 +62,9 @@ namespace Program
                 Console.WriteLine(list[i]);
             }
             Console.ReadLine();
+            string listString2 = list.ToString();
+            Console.WriteLine(listString2);
+            Console.ReadLine();
 
 
         }

@@ -9,7 +9,6 @@ namespace Program
     public class CustomList<T>
     {
         public int Count { get; set; }
-        public int Capacity { get; set; }
         public T[] MyArray { get; set; }
         public T this[int i]
         {
@@ -81,10 +80,7 @@ namespace Program
             int zipListCounter = zipList.Count;
             int myArrayCounter = Count;
 
-            for (int i = 0; i < zipList.Count; i++)
-            {
-                Count++;
-            }
+            Count += zipListCounter;
 
             T[] newArray = new T[Count];
             int counter = 0;
@@ -115,16 +111,17 @@ namespace Program
             MyArray = newArray;
         }
 
-        //public static CustomList<T> operator +(T x, T y)
-        //{
-        //    T result = x + y;
-        //    return result;
-        //}
-        //public static CustomList<T> operator -(T x, T y)
-        //{
-        //    T result = x - y;
-        //    return result;
-        //}
-
+        public static CustomList<T> operator +(CustomList<T> x, CustomList<T> y)
+        {
+            CustomList<T> list = new CustomList<T>
+            { Count = x.Count + y.Count };
+            return list;
+        }
+        public static CustomList<T> operator -(CustomList<T> x, CustomList<T> y)
+        {
+            CustomList<T> list = new CustomList<T>
+            { Count = x.Count - y.Count };
+            return list;
+        }
     }
 }
