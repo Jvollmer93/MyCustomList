@@ -19,7 +19,6 @@ namespace Program
         public CustomList()
         {
             Count = 0;
-            Capacity = 4;
             MyArray = new T[Count];
         }
         public void Add(T value)
@@ -77,21 +76,44 @@ namespace Program
 
             return arrayString;
         }
-        //public void Zip(CustomList<T> zipList)
-        //{
-        //    T[] newArray = new Array[MyArray.Length + zipList.Length];
-        //    int counter = 0;
+        public void Zip(CustomList<T> zipList)
+        {
+            int zipListCounter = zipList.Count;
+            int myArrayCounter = Count;
 
-        //    for (int i = 0; i < MyArray.Length; i++)
-        //    {
-        //        newArray[i + counter] = zipList[i];
-        //        newArray[i + counter] = MyArray[i];
-        //        counter++;
-        //    }
+            for (int i = 0; i < zipList.Count; i++)
+            {
+                Count++;
+            }
 
-        //    Count = counter * 2;
-        //    MyArray = newArray;
-        //}
+            T[] newArray = new T[Count];
+            int counter = 0;
+
+            for (int i = 0; i < Count; i++)
+            {
+                if(zipListCounter > 0)
+                {
+                    newArray[i + counter + 1] = zipList[i];
+                    zipListCounter--;
+                }
+                else
+                {
+                    zipListCounter--;
+                    if (zipListCounter < -1)
+                    {
+                        counter--;
+                    }
+                }
+                if(myArrayCounter > 0)
+                {
+                    newArray[i + counter] = MyArray[i];
+                    myArrayCounter--;
+                }
+                counter++;
+            }
+
+            MyArray = newArray;
+        }
 
         //public static CustomList<T> operator +(T x, T y)
         //{

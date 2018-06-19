@@ -28,6 +28,7 @@ namespace Program
             Console.ReadLine();
             string listString = list.ToString();//"98756543210"
             Console.WriteLine(listString);
+
             Console.ReadLine();//Add and ToString methods work.
 
             CustomList<int> list1 = new CustomList<int>();
@@ -54,6 +55,14 @@ namespace Program
             listString1 = list1.ToString();
             Console.WriteLine(listString1);
             Console.ReadLine();
+
+            list.Zip(list1);//9,1,8,3,7,5,6,7..
+            for (int i = 0; i < list.Count; i++)
+            {
+                Console.WriteLine(list[i]);
+            }
+            Console.ReadLine();
+
 
         }
     }
