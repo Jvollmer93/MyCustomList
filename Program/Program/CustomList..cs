@@ -9,9 +9,14 @@ namespace Program
     public class CustomList<T>
     {
         T item;
+        private T[] myArray = new T[4];
         public int Count { get; set; }
-        public int Capatcity { get; set; }
-        public T[] MyArray { get; set; }
+        public int Capacity { get; set; }
+        public T[] MyArray
+        {
+            get { return myArray; }
+            set { myArray = value; }
+        }
         public T this[int i]
         {
             get { return MyArray[i]; }
@@ -33,26 +38,27 @@ namespace Program
 
             for ( int i = 0; i < newArray.Length; i++)
             {
-                MyArray[i] = newArray[i];   
+                MyArray[i] = newArray[i];
             }
 
             MyArray[Count - 1] = value;              
         }
         public void Remove(T value)
         {
-            //MyArray = new T[Count];
+            MyArray = new T[Count];
+            T[] newArray = MyArray;
 
-            //for (int i = 0; i < MyArray.Length; i++)
-            //{
-            //    if (MyArray[i] != value)
-            //    {
-            //        MyArray[i] = newArray[i];
-            //    }
-            //    else if (MyArray[i] == value)
-            //    {
-            //        Count--;
-            //    }
-            //}
+            for (int i = 0; i < MyArray.Length; i++)
+            {
+                if(!MyArray[i].Equals(value))
+                {
+                    MyArray[i] = newArray[i];
+                }
+                else if (MyArray[i].Equals(value))
+                {
+                    Count--;
+                }
+            }
         }
         public string ToString()
         {
@@ -67,18 +73,18 @@ namespace Program
         }
         public void Zip(CustomList<T> zipList)
         {
-            //T[] newArray = new Array[MyArray.Length + zipList.Length];
-            //int counter = 0;
+            T[] newArray = new Array[MyArray.Length + zipList.Length];
+            int counter = 0;
 
-            //for (int i = 0; i < MyArray.length; i++)
-            //{
-            //    newArray.Insert(i + counter, zipList[i]);
-            //    newArray.Insert(i + counter, MyArray[i]);
-            //    counter++;
-            //}
+            for (int i = 0; i < MyArray.length; i++)
+            {
+                newArray.Insert(i + counter, zipList[i]);
+                newArray.Insert(i + counter, MyArray[i]);
+                counter++;
+            }
 
-            //Count = counter * 2;
-            //MyArray = newArray;
+            Count = counter * 2;
+            MyArray = newArray;
         }
 
         //public static CustomList<T> operator +(T x, T y)

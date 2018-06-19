@@ -21,6 +21,7 @@ namespace Program
                 //act
                 Assert.AreEqual(result, expectedResult);
             }
+            [TestMethod]
             public void AddTestResultIndex2()
             {
                 //arrange
@@ -34,6 +35,7 @@ namespace Program
                 //act
                 Assert.AreEqual(result, expectedResult);
             }
+            [TestMethod]
             public void AddTestInLoop()
             {
                 //arrange
