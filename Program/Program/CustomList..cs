@@ -48,14 +48,23 @@ namespace Program
             }
 
             MyArray = new T[Count];
-
-            for (int i = 0; i < MyArray.Length; i++)
+            int j = 0;
+            for (int i = 0; i < Count; i++)
             {
-                if (!MyArray[i].Equals(value))
+                if (!(newArray[j].Equals(value)))
                 {
-                    MyArray[i] = newArray[i];
+                    MyArray[i] = newArray[j];
                 }
-            }
+                else
+                {
+                    do
+                    {
+                        j++;
+                    } while ((newArray[j].Equals(value)));
+                    MyArray[i] = newArray[j];
+                }
+                j++;
+            }    
         }
         public override string ToString()
         {

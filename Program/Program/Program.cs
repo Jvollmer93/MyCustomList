@@ -28,19 +28,18 @@ namespace Program
             Console.ReadLine();
             string listString = list.ToString();//"98756543210"
             Console.WriteLine(listString);
-            Console.ReadLine();
+            Console.ReadLine();//Add and ToString methods work.
 
-            List<int> list1 = new List<int>()
-        {
-            1,
-            2,
-            3,
-            4,
-            5,
-            6,
-            7,
-            8
-        };
+            CustomList<int> list1 = new CustomList<int>();
+            list1.Add(1);
+            list1.Add(2);
+            list1.Add(4);
+            list1.Add(3);
+            list1.Add(4);
+            list1.Add(5);
+            list1.Add(6);
+            list1.Add(7);
+            list1.Add(8);
             list1.Remove(2);
             list1.Remove(4);
             list1.Remove(6);
@@ -51,7 +50,8 @@ namespace Program
                 Console.WriteLine(list1[i]);
             }
             Console.ReadLine();
-            string listString1 = list1.ToString();
+            string listString1; 
+            listString1 = list1.ToString();
             Console.WriteLine(listString1);
             Console.ReadLine();
 
