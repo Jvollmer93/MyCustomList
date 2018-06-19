@@ -165,7 +165,7 @@ namespace Program
                 expectedResult.Add(5);
                 expectedResult.Add(6);
 
-                odds.Zip(evens);
+                //odds.Zip(evens);
                 CustomList<int> result = odds;
                 Assert.AreEqual(expectedResult, result);
             }
@@ -189,7 +189,7 @@ namespace Program
                 expectedResult.Add('e');
                 expectedResult.Add('f');
 
-                ace.Zip(bdf);
+                //ace.Zip(bdf);
                 CustomList<char> result = ace;
 
                 Assert.AreEqual(expectedResult, result);
@@ -213,7 +213,7 @@ namespace Program
                 expectedResult.Add("called");
                 expectedResult.Add("CustomList");
                 
-                list1.Zip(list2);
+                //list1.Zip(list2);
                 CustomList<string> result = list1;
 
                 Assert.AreEqual(expectedResult, result);
