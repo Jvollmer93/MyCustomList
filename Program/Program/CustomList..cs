@@ -1,28 +1,46 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Program
+namespace Program 
 {
-    public class CustomList<T>
+    public class CustomList<T> : IEnumerable
     {
-        public int Count { get; set; }
+        int[] customListArray = new int[10];
+        private int count;
+        public int Count
+        {
+            get { return count; }
+        }
         public T[] MyArray { get; set; }
         public T this[int i]
         {
             get { return MyArray[i]; }
             set { MyArray[i] = value; }
         }
+        //public CustomList()
+        //{
+        //    count = 0;
+        //    MyArray = new T[Count];
+        //}
         public CustomList()
         {
-            Count = 0;
-            MyArray = new T[Count];
+            count = 10;
+            customListArray = new int[10] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+        }
+        public IEnumerator GetEnumerator()
+        {
+            for ( int i = 0; i < customListArray.Length; i++)
+            {
+                yield return customListArray[i];
+            }
         }
         public void Add(T value)
         {
-            Count++;
+            count++;
             T[] newArray = MyArray;
             MyArray = new T[Count];
 
@@ -41,12 +59,13 @@ namespace Program
             {
                 if (MyArray[i].Equals(value))
                 {
-                    Count--;
+                    count--;
                 }
             }
 
             MyArray = new T[Count];
             int j = 0;
+
             for (int i = 0; i < Count; i++)
             {
                 if (!(newArray[j].Equals(value)))
@@ -79,9 +98,7 @@ namespace Program
         {
             int zipListCounter = zipList.Count;
             int myArrayCounter = Count;
-
-            Count += zipListCounter;
-
+            count += zipListCounter;
             T[] newArray = new T[Count];
             int counter = 0;
 
@@ -107,20 +124,29 @@ namespace Program
                 }
                 counter++;
             }
-
+            count = newArray.Length;
             MyArray = newArray;
         }
-
-        public static CustomList<T> operator +(CustomList<T> x, CustomList<T> y)
+        public void Sort()
         {
-            CustomList<T> list = new CustomList<T>
-            { Count = x.Count + y.Count };
+            T[] newArray = MyArray;
+            for(int i = 0; i < Count; i ++)
+            {
+
+
+            }
+        }
+
+        public static CustomList<T> operator + (CustomList<T> x, T y)
+        {
+            CustomList<T> list = new CustomList<T>();
+            x.Add(y);
             return list;
         }
-        public static CustomList<T> operator -(CustomList<T> x, CustomList<T> y)
+        public static CustomList<T> operator - (CustomList<T> x, T y)
         {
-            CustomList<T> list = new CustomList<T>
-            { Count = x.Count - y.Count };
+            CustomList<T> list = new CustomList<T>();
+            x.Remove(y);
             return list;
         }
     }

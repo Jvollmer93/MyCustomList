@@ -6,9 +6,6 @@ namespace Program
     [TestClass]
     public class CustomListTest
     {
-        [TestClass]
-        class Test
-        {
             [TestMethod]
             public void AddTest()
             {
@@ -32,21 +29,6 @@ namespace Program
                 list.Add(1);
                 list.Add(0);
                 int result = list[2];
-                //act
-                Assert.AreEqual(result, expectedResult);
-            }
-            [TestMethod]
-            public void AddTestInLoop()
-            {
-                //arrange
-                CustomList<int> list = new CustomList<int>();
-                int expectedResult = 5;
-                //assert
-                for (int i = 0; i < 5; i++)
-                {
-                    list.Add(i);
-                }
-                int result = list[4];
                 //act
                 Assert.AreEqual(result, expectedResult);
             }
@@ -165,7 +147,7 @@ namespace Program
                 expectedResult.Add(5);
                 expectedResult.Add(6);
 
-                //odds.Zip(evens);
+                odds.Zip(evens);
                 CustomList<int> result = odds;
                 Assert.AreEqual(expectedResult, result);
             }
@@ -189,7 +171,7 @@ namespace Program
                 expectedResult.Add('e');
                 expectedResult.Add('f');
 
-                //ace.Zip(bdf);
+                ace.Zip(bdf);
                 CustomList<char> result = ace;
 
                 Assert.AreEqual(expectedResult, result);
@@ -204,7 +186,7 @@ namespace Program
                 
                 list1.Add("This");
                 list1.Add("is");
-                list1.Add("CustmoList");
+                list1.Add("CustomList");
                 list2.Add("class");
                 list2.Add("called");
                 expectedResult.Add("This");
@@ -213,7 +195,7 @@ namespace Program
                 expectedResult.Add("called");
                 expectedResult.Add("CustomList");
                 
-                //list1.Zip(list2);
+                list1.Zip(list2);
                 CustomList<string> result = list1;
 
                 Assert.AreEqual(expectedResult, result);
@@ -252,4 +234,4 @@ namespace Program
             }
         }
     }
-}
+
