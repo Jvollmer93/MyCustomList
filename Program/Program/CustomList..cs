@@ -10,30 +10,25 @@ namespace Program
     public class CustomList<T> : IEnumerable
     {
         int[] customListArray = new int[10];
-        private int count;
+        private int count = 0;
         public int Count
         {
             get { return count; }
         }
-        public T[] MyArray { get; set; }
+        public T[] MyArray{ get; set; }
         public T this[int i]
         {
             get { return MyArray[i]; }
             set { MyArray[i] = value; }
         }
-        //public CustomList()
-        //{
-        //    count = 0;
-        //    MyArray = new T[Count];
-        //}
         public CustomList()
         {
-            count = 10;
-            customListArray = new int[10] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            count = 0;
+            MyArray = new T[Count];
         }
         public IEnumerator GetEnumerator()
         {
-            for ( int i = 0; i < customListArray.Length; i++)
+            for ( int i = 0; i < customListArray.Length; i++ )
             {
                 yield return customListArray[i];
             }
@@ -136,18 +131,15 @@ namespace Program
 
             }
         }
-
         public static CustomList<T> operator + (CustomList<T> x, T y)
         {
-            CustomList<T> list = new CustomList<T>();
             x.Add(y);
-            return list;
+            return x;
         }
         public static CustomList<T> operator - (CustomList<T> x, T y)
         {
-            CustomList<T> list = new CustomList<T>();
             x.Remove(y);
-            return list;
+            return x;
         }
     }
 }
